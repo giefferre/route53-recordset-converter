@@ -14,32 +14,32 @@ pip install route53-recordset-converter
 
 ## Usage
 
-1. Dump AWS Route 53 Hosted Zone records to a CSV using [route53-transfer](https://pypi.org/project/route53-transfer/)
+- Dump AWS Route 53 Hosted Zone records to a CSV using [route53-transfer](https://pypi.org/project/route53-transfer/)
 
 ```bash
 route53-transfer dump example.com example.com.csv
 ```
 
-2. Convert the CSV file to a JSON one
+- Convert the CSV file to a JSON one
 
 ```bash
 route53-recordset-converter example.com.csv example.com.json
 ```
 
-3. Use the JSON in Terraform
+- Use the JSON in Terraform
 
 ```terraform
 locals {
-  dns_records = jsondecode(file("example.com.json"))
+    dns_records = jsondecode(file("example.com.json"))
 }
 
 resource "google_dns_record_set" "dns_records" {
-  for_each     = { for index, dns_record in local.dns_records : index => dns_record }
-  name         = each.value.name
-  managed_zone = "dns-zone-name"
-  type         = each.value.type
-  ttl          = each.value.ttl
-  rrdatas      = each.value.value
+    for_each     = { for index, dns_record in local.dns_records : index => dns_record }
+    name         = each.value.name
+    managed_zone = "dns-zone-name"
+    type         = each.value.type
+    ttl          = each.value.ttl
+    rrdatas      = each.value.value
 }
 ```
 
