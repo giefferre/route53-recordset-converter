@@ -12,6 +12,7 @@ setup(
     name='route53-recordset-converter',
     version=__version__,
     description='Converts an input CSV file from route53-transfer to a JSON file which can be then used in a Terraform google_dns_record_set',
+    long_description_content_type="text/markdown",
     long_description=read('README.md'),
     url='http://github.com/giefferre/route53-recordset-converter',
     author='Gianfranco Reppucci',
