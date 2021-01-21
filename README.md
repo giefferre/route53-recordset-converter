@@ -43,6 +43,13 @@ resource "google_dns_record_set" "dns_records" {
 }
 ```
 
+### CSV Formats
+
+The following CSV formats are supported:
+
+- `aws`: AWS Route 53 standard format, as outputted by `route53-transfer`
+- `register.it`: Register.it format, as exported by [www.register.it](https://www.register.it)
+
 ## In Python
 
 You can convert the CSV without dumping them to a JSON.

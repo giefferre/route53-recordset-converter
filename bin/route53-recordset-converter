@@ -11,6 +11,7 @@ Options:
   -h --help                               Show this screen.
   -v --version                            Show the version.
   -n --no-headers-skip                    Consider first row of the CSV file as record (by default first row is skipped).
+  -f --csv-format=CSV_FORMAT              Type of input CSV. Possible values: aws, register.it (aws is default).
 """
 
 from docopt import docopt
